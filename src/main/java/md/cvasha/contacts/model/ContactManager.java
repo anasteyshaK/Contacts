@@ -9,10 +9,10 @@ public class ContactManager {
     contacts.add(contact);
   }
 
-  public boolean removeContactFullData(Contact contactToDelete) {
+  public boolean removeByID(int idToDelete) {
     for (int i = 0; i < contacts.size(); i++) {
       Contact contact = contacts.get(i);
-      if (contact.equals(contactToDelete)) {
+      if (contact.getId() == idToDelete) {
         contacts.remove(i);
         return true;
       }
@@ -20,7 +20,7 @@ public class ContactManager {
     return false;
   }
 
-  public void allContactsPresent() {
+  public void printAllContacts() {
     for (Contact contact : contacts) {
       System.out.println(contact);
     }
