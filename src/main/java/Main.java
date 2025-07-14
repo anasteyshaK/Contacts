@@ -25,17 +25,12 @@ Choose your option:
       sc.nextLine();
 
       switch (ch) {
-        case 1 -> {
-          addContact();
-        }
+        case 1 -> addContact();
 
-        case 2 -> {
-          viewAllContacts();
-        }
+        case 2 -> viewAllContacts();
 
-        case 3 -> {
-          deleteContact();
-        }
+        case 3 -> deleteContact();
+
         case 4 -> {
           System.out.println("Goodbye!");
           return;
