@@ -11,17 +11,23 @@ public class Main {
 
     while (true) {
       System.out.println("\nMENU");
-      System.out.println("1. Add Contact");
-      System.out.println("2. View All Contacts");
-      System.out.println("3. Delete Contact by full data");
-      System.out.println("4. Exit");
-      System.out.print("Choose your option: ");
+      System.out.println(
+"""
+1. Add Contact
+2. View All Contacts
+3. Delete Contact by full data
+4. Exit
+Choose your option:
+""");
+
       int ch = sc.nextInt();
       sc.nextLine();
 
       switch (ch) {
-        case 1:
+        case 1 -> {
           System.out.print("First Name: ");
+
+
           String firstName = sc.nextLine();
 
           System.out.print("Last Name: ");
@@ -36,43 +42,32 @@ public class Main {
           Contact contact = new Contact(contactId++, firstName, lastName, phoneNumber, email);
           manager.addContact(contact);
           System.out.println("Contact added!");
-          break;
+        }
 
-        case 2:
+        case 2 -> {
           System.out.println("All Contacts:");
-          manager.allContactsPresent();
-          break;
+          manager.printAllContacts();
+        }
 
-        case 3:
-          System.out.println("Remove contact by full data:");
-          System.out.print("First Name: ");
-          String firstNameDel = sc.nextLine();
+        case 3 -> {
+          System.out.println("Remove contact by Id:");
+          System.out.print("Enter Id: ");
+          int idToDel = sc.nextInt();
 
-          System.out.print("Last Name: ");
-          String lastNameDel = sc.nextLine();
-
-          System.out.print("Phone Number: ");
-          String phoneNumberDel = sc.nextLine();
-
-          System.out.print("Email: ");
-          String emailDel = sc.nextLine();
-
-          Contact contactToDelete =
-              new Contact(firstNameDel, lastNameDel, phoneNumberDel, emailDel);
-          boolean removedByData = manager.removeContactFullData(contactToDelete);
+          boolean removedByData = manager.removeByID(idToDel);
 
           if (removedByData) {
             System.out.println("Contact deleted.");
           } else {
             System.out.println("The contact is not found.");
           }
-          break;
-        case 4:
+        }
+        case 4 -> {
           System.out.println("Goodbye!");
           return;
+        }
 
-        default:
-          System.out.println("Try again!");
+        default -> System.out.println("Try again!");
       }
     }
   }
